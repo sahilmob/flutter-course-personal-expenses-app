@@ -86,6 +86,12 @@ class _MyHomePageState extends State<MyHomePage> {
         });
   }
 
+  void _deleteTransaction(int index) {
+    setState(() {
+      _transactions.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,7 +110,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           children: <Widget>[
             Chart(_recentTransactions),
-            TransactionList(_transactions)
+            TransactionList(_transactions, _deleteTransaction)
           ],
         ),
       ),
