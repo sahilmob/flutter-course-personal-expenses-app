@@ -37,41 +37,63 @@ class TransactionList extends StatelessWidget {
               itemBuilder: (BuildContext context, int i) {
                 Transaction tx = transactions[i];
                 return Card(
-                  child: Row(
-                    children: <Widget>[
-                      Container(
-                        margin:
-                            EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                  elevation: 5,
+                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                  child: ListTile(
+                    leading: CircleAvatar(
+                      child: Padding(
                         padding: EdgeInsets.all(10),
-                        decoration: BoxDecoration(
-                            border: Border.all(
-                                color: Theme.of(context).primaryColor,
-                                width: 2)),
-                        child: Text(
-                          '\$${tx.amount.toStringAsFixed(2)}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20,
-                            color: Theme.of(context).primaryColor,
-                          ),
+                        child: FittedBox(
+                          child: Text("\$${tx.amount}"),
                         ),
                       ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: <Widget>[
-                          Text(
-                            tx.title,
-                            style: Theme.of(context).textTheme.title,
-                          ),
-                          Text(
-                            DateFormat.yMMMd().format(tx.date),
-                            style: TextStyle(color: Colors.grey),
-                          )
-                        ],
-                      )
-                    ],
+                      radius: 30,
+                    ),
+                    title: Text(
+                      tx.title,
+                      style: Theme.of(context).textTheme.title,
+                    ),
+                    subtitle: Text(
+                      DateFormat.yMMMd().format(tx.date),
+                    ),
                   ),
                 );
+                // return Card(
+                //   child: Row(
+                //     children: <Widget>[
+                //       Container(
+                //         margin:
+                //             EdgeInsets.symmetric(vertical: 10, horizontal: 15),
+                //         padding: EdgeInsets.all(10),
+                //         decoration: BoxDecoration(
+                //             border: Border.all(
+                //                 color: Theme.of(context).primaryColor,
+                //                 width: 2)),
+                //         child: Text(
+                //           '\$${tx.amount.toStringAsFixed(2)}',
+                //           style: TextStyle(
+                //             fontWeight: FontWeight.bold,
+                //             fontSize: 20,
+                //             color: Theme.of(context).primaryColor,
+                //           ),
+                //         ),
+                //       ),
+                //       Column(
+                //         crossAxisAlignment: CrossAxisAlignment.start,
+                //         children: <Widget>[
+                //           Text(
+                //             tx.title,
+                //             style: Theme.of(context).textTheme.title,
+                //           ),
+                //           Text(
+                //             DateFormat.yMMMd().format(tx.date),
+                //             style: TextStyle(color: Colors.grey),
+                //           )
+                //         ],
+                //       )
+                //     ],
+                //   ),
+                // );
               },
               itemCount: transactions.length,
             ),
