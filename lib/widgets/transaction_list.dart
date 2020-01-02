@@ -36,25 +36,28 @@ class TransactionList extends StatelessWidget {
           : ListView.builder(
               itemBuilder: (BuildContext context, int i) {
                 Transaction tx = transactions[i];
-                return Card(
-                  elevation: 5,
-                  margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
-                  child: ListTile(
-                    leading: CircleAvatar(
-                      child: Padding(
-                        padding: EdgeInsets.all(10),
-                        child: FittedBox(
-                          child: Text("\$${tx.amount}"),
+                return Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Card(
+                    elevation: 5,
+                    margin: EdgeInsets.symmetric(vertical: 8, horizontal: 5),
+                    child: ListTile(
+                      leading: CircleAvatar(
+                        child: Padding(
+                          padding: EdgeInsets.all(10),
+                          child: FittedBox(
+                            child: Text("\$${tx.amount}"),
+                          ),
                         ),
+                        radius: 30,
                       ),
-                      radius: 30,
-                    ),
-                    title: Text(
-                      tx.title,
-                      style: Theme.of(context).textTheme.title,
-                    ),
-                    subtitle: Text(
-                      DateFormat.yMMMd().format(tx.date),
+                      title: Text(
+                        tx.title,
+                        style: Theme.of(context).textTheme.title,
+                      ),
+                      subtitle: Text(
+                        DateFormat.yMMMd().format(tx.date),
+                      ),
                     ),
                   ),
                 );
